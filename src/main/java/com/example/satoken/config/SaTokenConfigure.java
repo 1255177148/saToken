@@ -2,6 +2,7 @@ package com.example.satoken.config;
 
 import cn.dev33.satoken.config.SaTokenConfig;
 import cn.dev33.satoken.interceptor.SaInterceptor;
+import cn.dev33.satoken.router.SaRouter;
 import cn.dev33.satoken.stp.StpUtil;
 import com.example.satoken.constant.SaTokenConstant;
 import com.example.satoken.constant.TokenStyleEnum;
@@ -17,8 +18,9 @@ public class SaTokenConfigure implements WebMvcConfigurer {
     @Override
     public void addInterceptors(InterceptorRegistry registry) {
         registry.addInterceptor(new SaInterceptor(handler -> {
-            StpUtil.checkLogin();
-            // 这里可以给每个接口地址的路径鉴权
+            SaRouter.match("/**", StpUtil::checkLogin)
+                    .notMatch(SaTokenConstant.excludePathPatterns);
+            // 这里可以给每个接口地址的路径鉴权，当然，也可以用注解在每个接口上鉴权
         })).addPathPatterns(SaTokenConstant.allRouters)
                 .excludePathPatterns(SaTokenConstant.excludePathPatterns);
     }

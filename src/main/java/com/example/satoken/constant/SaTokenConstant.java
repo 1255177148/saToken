@@ -30,6 +30,15 @@ public class SaTokenConstant {
             "/doc.html",
             "**/swagger-ui.html",
             "/swagger-ui.html/**",
-            "/img/head/**"
+            "/img/head/**",
+            ExcludePathEnum.TEMP_TOKEN.getPath(),
+            ExcludePathEnum.VERIFY_IMG.getPath(),
+            ExcludePathEnum.LOGIN.getPath()
     );
+
+    public static final String NOT_TOKEN = "您未登录，请登录！";
+
+    public static final String TOKEN_OVERDUE = "登录已失效，请重新登录！";
+
+    public static final String LOGIN_REPLACE = "您的账号已在别处登录！";
 }
