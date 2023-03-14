@@ -19,10 +19,7 @@ public class SaTokenConstant {
     public static final List<String> allRouters = Collections.singletonList("/**");
 
     public static final List<String> excludePathPatterns = Arrays.asList(
-            "/ss/**",
             "/test/**",
-            "/contract/**",
-            "/common/tree/area/update",
             "/file/upload/img/head/**",
             "/swagger-resources/**",
             "/webjars/**",
@@ -33,7 +30,8 @@ public class SaTokenConstant {
             "/img/head/**",
             ExcludePathEnum.TEMP_TOKEN.getPath(),
             ExcludePathEnum.VERIFY_IMG.getPath(),
-            ExcludePathEnum.LOGIN.getPath()
+            ExcludePathEnum.LOGIN.getPath(),
+            ExcludePathEnum.LOGOUT.getPath()
     );
 
     public static final String NOT_TOKEN = "您未登录，请登录！";

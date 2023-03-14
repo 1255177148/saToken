@@ -9,7 +9,8 @@ import lombok.Getter;
 public enum ExcludePathEnum {
     TEMP_TOKEN("/tempToken", "获取临时token的接口"),
     VERIFY_IMG("/getVerifyImg", "获取验证码图片的接口"),
-    LOGIN("/login", "登录接口");
+    LOGIN("/login", "登录接口"),
+    LOGOUT("/logout", "注销登录接口");
 
     private final String path;
     private final String remark;

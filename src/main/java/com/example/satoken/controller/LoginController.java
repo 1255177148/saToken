@@ -90,4 +90,12 @@ public class LoginController {
         StpUtil.getSession().set(LoginConstant.USER_ID, "10001");
         return BaseResult.success(StpUtil.getTokenValue(), "登录成功");
     }
+
+    /**
+     * 注销登录接口
+     */
+    @PostMapping("logout")
+    public void logout(){
+        StpUtil.logout();
+    }
 }
