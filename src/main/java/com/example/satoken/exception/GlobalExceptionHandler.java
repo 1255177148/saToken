@@ -1,6 +1,7 @@
 package com.example.satoken.exception;
 
 import cn.dev33.satoken.exception.NotLoginException;
+import cn.dev33.satoken.exception.NotPermissionException;
 import com.example.satoken.constant.SaTokenConstant;
 import com.example.satoken.model.BaseResult;
 import lombok.extern.slf4j.Slf4j;
@@ -35,5 +36,17 @@ public class GlobalExceptionHandler {
             default:
                 return BaseResult.fail(520, SaTokenConstant.NOT_TOKEN);
         }
+    }
+
+    /**
+     * 全局权限校验异常处理
+     * @param exception 权限校验异常
+     * @return
+     */
+    @ExceptionHandler(NotPermissionException.class)
+    public BaseResult<String> handlerNotPermissionException(NotPermissionException exception){
+        // 打印日志
+        log.error(exception.getMessage(), exception);
+        return BaseResult.fail(520, SaTokenConstant.PERMISSION_ERROR);
     }
 }

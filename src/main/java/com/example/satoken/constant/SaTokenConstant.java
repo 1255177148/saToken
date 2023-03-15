@@ -39,4 +39,6 @@ public class SaTokenConstant {
     public static final String TOKEN_OVERDUE = "登录已失效，请重新登录！";
 
     public static final String LOGIN_REPLACE = "您的账号已在别处登录！";
+
+    public static final String PERMISSION_ERROR = "您没有权限！";
 }
