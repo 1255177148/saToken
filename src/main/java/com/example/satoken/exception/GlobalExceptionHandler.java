@@ -1,5 +1,6 @@
 package com.example.satoken.exception;
 
+import cn.dev33.satoken.exception.DisableServiceException;
 import cn.dev33.satoken.exception.NotLoginException;
 import cn.dev33.satoken.exception.NotPermissionException;
 import com.example.satoken.constant.SaTokenConstant;
@@ -48,5 +49,17 @@ public class GlobalExceptionHandler {
         // 打印日志
         log.error(exception.getMessage(), exception);
         return BaseResult.fail(520, SaTokenConstant.PERMISSION_ERROR);
+    }
+
+    /**
+     * 全局账号封禁异常处理
+     * @param exception 账号封禁异常
+     * @return
+     */
+    @ExceptionHandler(DisableServiceException.class)
+    public BaseResult<String> handlerDisableServiceException(DisableServiceException exception){
+        // 打印日志
+        log.error(exception.getMessage(), exception);
+        return BaseResult.fail(520, SaTokenConstant.LOGIN_DISABLE);
     }
 }

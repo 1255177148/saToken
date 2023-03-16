@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.RestController;
 @Slf4j
 public class TestController {
 
-    @SaCheckPermission("user:add")
+    @SaCheckPermission("user:select")
     @GetMapping("/user")
     public BaseResult<String> getUserInfo(){
         return BaseResult.success("用户信息", null);

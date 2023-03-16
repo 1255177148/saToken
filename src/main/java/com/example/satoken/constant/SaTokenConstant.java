@@ -41,4 +41,6 @@ public class SaTokenConstant {
     public static final String LOGIN_REPLACE = "您的账号已在别处登录！";
 
     public static final String PERMISSION_ERROR = "您没有权限！";
+
+    public static final String LOGIN_DISABLE = "您的账号已封禁，请稍等再试！";
 }

@@ -5,6 +5,7 @@ import cn.dev33.satoken.temp.SaTempUtil;
 import com.alibaba.fastjson.JSON;
 import com.example.satoken.constant.LoginConstant;
 import com.example.satoken.dto.LoginDto;
+import com.example.satoken.entity.User;
 import com.example.satoken.model.BaseResult;
 import com.example.satoken.service.LoginService;
 import com.example.satoken.util.VerifyImgUtil;
@@ -75,19 +76,22 @@ public class LoginController {
      * @return
      */
     @PostMapping("/login")
-    public BaseResult<String> login(@RequestBody LoginDto dto) {
+    public BaseResult<Object> login(@RequestBody LoginDto dto) {
         log.info("开始登录------>" + JSON.toJSONString(dto));
-        BaseResult<String> result = loginService.checkLogin(dto);
+        // 校验是否封禁
+        StpUtil.checkDisable("10001");
+        BaseResult<Object> result = loginService.checkLogin(dto);
         if (!result.isState()) {
             return result;
         }
         loginService.deleteTempToken(dto.getTempToken());// 校验成功后移除临时token
         // 登录
-        StpUtil.login("10001");
+        User user = (User) result.getData();
+        StpUtil.login(user.getId());
         // 将用户的数据放入上下文session中
-        StpUtil.getSession().set(LoginConstant.LOGIN_NAME, "admin");
-        StpUtil.getSession().set(LoginConstant.REAL_NAME, "管理员");
-        StpUtil.getSession().set(LoginConstant.USER_ID, "10001");
+        StpUtil.getSession().set(LoginConstant.LOGIN_NAME, user.getLoginName());
+        StpUtil.getSession().set(LoginConstant.REAL_NAME, user.getUserName());
+        StpUtil.getSession().set(LoginConstant.USER_ID, user.getId());
         return BaseResult.success(StpUtil.getTokenValue(), "登录成功");
     }
 

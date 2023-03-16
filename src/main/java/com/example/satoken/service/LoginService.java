@@ -10,7 +10,7 @@ public interface LoginService {
      * @param dto
      * @return
      */
-    BaseResult<String> checkLogin(LoginDto dto);
+    BaseResult<Object> checkLogin(LoginDto dto);
 
     /**
      * 存放临时token
