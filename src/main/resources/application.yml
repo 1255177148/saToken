@@ -7,7 +7,7 @@ spring:
   datasource:
     url: jdbc:mysql://127.0.0.1:3306/sa_token_demo?useSSL=false&useUnicode=true&characterEncoding=UTF-8&serverTimezone=Asia/Shanghai&rewriteBatchedStatements=true&allowMultiQueries=true
     username: root
-    password: 19941128ya
+    password: root
     driver-class-name: com.mysql.cj.jdbc.Driver
     hikari:
       minimum-idle: 5
