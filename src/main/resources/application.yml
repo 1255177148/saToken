@@ -44,3 +44,6 @@ spring:
 
 check:
   error-num: 5
+
+encrypt:
+  key: 6d476239336e624a6966383135346551

@@ -4,5 +4,10 @@
       "name": "check.error-num",
       "type": "java.lang.Integer",
       "description": "密码校验失败次数上限."
+    },
+    {
+      "name": "encrypt.key",
+      "type": "java.lang.String",
+      "description": "国密加密秘钥."
     }
   ] }

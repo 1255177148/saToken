@@ -82,6 +82,13 @@
             <version>5.8.15</version>
         </dependency>
 
+        <!--  国密  -->
+        <dependency>
+            <groupId>org.bouncycastle</groupId>
+            <artifactId>bcprov-jdk15to18</artifactId>
+            <version>1.68</version>
+        </dependency>
+
         <dependency>
             <groupId>org.apache.commons</groupId>
             <artifactId>commons-lang3</artifactId>
@@ -93,10 +100,17 @@
             <version>1.2.58</version>
         </dependency>
 
+        <!-- 将配置文件中自定义的配置项生成元数据信息，在resource/**-metadata.json中，可以给自定义的配置项添加注释备注 -->
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-configuration-processor</artifactId>
             <optional>true</optional>
+        </dependency>
+
+        <!--   aop切面   -->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-aop</artifactId>
         </dependency>
     </dependencies>
 

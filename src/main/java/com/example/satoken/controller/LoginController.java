@@ -3,7 +3,10 @@ package com.example.satoken.controller;
 import cn.dev33.satoken.stp.StpUtil;
 import cn.dev33.satoken.temp.SaTempUtil;
 import com.alibaba.fastjson.JSON;
+import com.example.satoken.annotation.Operation;
 import com.example.satoken.constant.LoginConstant;
+import com.example.satoken.constant.ModuleEnum;
+import com.example.satoken.constant.OperateTypeEnum;
 import com.example.satoken.dto.LoginDto;
 import com.example.satoken.entity.User;
 import com.example.satoken.model.BaseResult;
@@ -76,6 +79,7 @@ public class LoginController {
      * @return
      */
     @PostMapping("/login")
+    @Operation(type = OperateTypeEnum.LOGIN, isLogin = true, module = ModuleEnum.USER)
     public BaseResult<Object> login(@RequestBody LoginDto dto) {
         log.info("开始登录------>" + JSON.toJSONString(dto));
         // 校验是否封禁
