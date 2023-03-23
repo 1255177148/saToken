@@ -89,7 +89,7 @@ public class OperationAspect {
      *
      * @return 当前登录人员的信息
      */
-    public Map<String, String> getLoginUserInfo() {
+    private Map<String, String> getLoginUserInfo() {
         Map<String, String> map = new LinkedHashMap<>();
         String loginName;
         String userName;
