@@ -28,13 +28,14 @@ public class AsyncCommon {
      * @param operation 操作日志注解
      * @param source 操作数据来源
      * @param userInfo 当前登录人员信息
+     * @param operateDate 操作时间
      */
-    public void saveOperateLog(String requestParams, String ip, Operation operation, String source, Map<String, String> userInfo){
+    public void saveOperateLog(String requestParams, String ip, Operation operation, String source, Map<String, String> userInfo, Date operateDate){
         SystemOperateLog operateLog = new SystemOperateLog();
         operateLog.setOperateContent(StringUtils.isBlank(requestParams) ? "" : requestParams);
         operateLog.setOperateType(operation.type().getTypeCode());
         operateLog.setOperateSource(source);
-        operateLog.setOperateTime(new Date());
+        operateLog.setOperateTime(operateDate);
         operateLog.setOperateLoginName(userInfo.get(LoginConstant.LOGIN_NAME));
         operateLog.setOperateUserId(userInfo.get(LoginConstant.USER_ID));
         operateLog.setOperateUserName(userInfo.get(LoginConstant.REAL_NAME));

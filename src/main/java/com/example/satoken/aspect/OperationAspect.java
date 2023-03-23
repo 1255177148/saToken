@@ -27,10 +27,7 @@ import org.springframework.web.context.request.ServletRequestAttributes;
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 import java.lang.reflect.Method;
-import java.util.HashMap;
-import java.util.LinkedHashMap;
-import java.util.Map;
-import java.util.Objects;
+import java.util.*;
 
 @Aspect
 @Component
@@ -82,7 +79,7 @@ public class OperationAspect {
         Operation operation = m.getAnnotation(Operation.class);
         if (operation != null){
             String requestIP = ServletUtil.getClientIP(request);
-            asyncCommon.saveOperateLog(params, requestIP, operation, pair.getRight(), userInfo);
+            asyncCommon.saveOperateLog(params, requestIP, operation, pair.getRight(), userInfo, new Date());
         }
         return proceed;
     }
