@@ -82,8 +82,6 @@ public class LoginController {
     @Operation(type = OperateTypeEnum.LOGIN, isLogin = true, module = ModuleEnum.USER)
     public BaseResult<Object> login(@RequestBody LoginDto dto) {
         log.info("开始登录------>" + JSON.toJSONString(dto));
-        // 校验是否封禁
-        StpUtil.checkDisable("10001");
         BaseResult<Object> result = loginService.checkLogin(dto);
         if (!result.isState()) {
             return result;

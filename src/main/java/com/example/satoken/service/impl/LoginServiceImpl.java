@@ -60,6 +60,8 @@ public class LoginServiceImpl implements LoginService {
         if (user == null) {
             return BaseResult.fail(530, LoginConstant.LOGIN_NAME_ERROR);
         }
+        // 校验是否封禁
+        StpUtil.checkDisable(user.getId());
         if (!user.getPassword().equals(dto.getPassword())) {
             String key = LoginConstant.CHECK_ERROR_KEY_PRE + dto.getLoginName();
             AtomicInteger atomicInteger = (AtomicInteger) redisUtil.get(key);
